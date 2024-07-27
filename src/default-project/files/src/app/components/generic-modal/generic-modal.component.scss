@@ -1,0 +1,20 @@
+@import '../../../assets/scss/custom/colors';
+
+.color {
+  display: inline-flex;
+  height: 5em;
+}
+
+.backgroundSuccess {
+    background-color: $color_success !important;
+}
+
+.backgroundError {
+    background-color: $invalid-field !important;
+}
+
+.card-footer {
+  button {
+    width: 98%;
+  }
+}

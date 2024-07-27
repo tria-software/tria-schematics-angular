@@ -1,0 +1,64 @@
+<div class="card white-content">
+    <div class="card-header color backgroundSuccess">
+      <h4
+        class="card-title"
+        style="
+          width: 95%;
+          padding: 0px;
+          color: white;
+          padding-top: 10px;
+          font-weight: bold;
+        "
+      >
+        {{ "Novo Layout" }}
+      </h4>
+      <button
+        id="btn-close-modal"
+        type="button"
+        class="close"
+        (click)="closeModal()"
+        data-dismiss="modal"
+        aria-label="Close"
+        style="color: white; line-height: 30px; width: 10%"
+      >
+        <i class="material-icons" style="font-weight: bold">close</i>
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <div class="form-group form-margintop">
+            <div class="row margin-input">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label
+                    [class.required]="sendform && !form.controls['description'].valid"
+                    >Descrição<span class="required">*</span></label
+                  >
+                  <input
+                    class="form-control"
+                    formControlName="description"
+                    type="text"
+                    placeholder="Informe a Descrição"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <div class="row" style="margin-top: 20px">
+        <div class="col-6">
+          <button (click)="closeModal()" class="btn btn-default">Cancelar</button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-default backgroundSuccess" (click)="save()">
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

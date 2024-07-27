@@ -1,0 +1,29 @@
+{
+  "name": "tria-schematics-test",
+  "version": "1.0.0",
+  "description": "Tria Schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "Guilherme Camargo",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^18.1.1",
+    "@angular-devkit/schematics": "^18.1.1",
+    "@angular/cdk": "^18.1.2",
+    "@angular/common": "^18.1.2",
+    "@angular/core": "^18.1.2",
+    "@schematics/angular": "^18.1.2",
+    "typescript": "~5.5.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "jasmine": "^5.0.0"
+  }
+}

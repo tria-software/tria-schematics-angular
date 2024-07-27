@@ -1,0 +1,51 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="navbar-wrapper">
+      <a
+        class="col-12 ml-4 navbar-brand"
+        href="javascript:void(0)"
+        style="position: absolute; display: contents"
+      >
+        <div class="burger">
+          <button
+            style="background-color: transparent"
+            mat-button
+            (click)="openMenu()"
+          >
+            <img src="assets/img/burger-branca.png" />
+          </button>
+        </div>
+      </a>
+    </div>
+    <div class="width96">
+      <div class="logo">
+        <img src="../../../assets/img/default-logo-branco-alterar.png" />
+      </div>
+    </div>
+    <div class="width96">
+      <!-- USUÁRIO -->
+      <div class="user-toogle" (click)="toogleDropdown()">
+        <img class="img-login" src="assets/img/default-avatar.png" />
+        <span class="name-user">{{ userName }}</span>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </div>
+      <div
+        class="dropdown-menu"
+        *ngIf="dropdownMenu"
+        (click)="toogleDropdown()"
+      >
+        <div class="text-center">{{ profile }}</div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="changePassword()">Alterar Senha</a>
+        <a class="dropdown-item" (click)="logOut()">Sair</a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div
+  class="overlay-dropdown"
+  *ngIf="dropdownMenu"
+  (click)="toogleDropdown()"
+></div>
+<app-page-loader></app-page-loader>
+<app-side-menu></app-side-menu>

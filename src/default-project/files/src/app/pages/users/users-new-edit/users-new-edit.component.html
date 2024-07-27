@@ -1,0 +1,177 @@
+<app-header-page
+  [title]="isAdd ? 'Novo Usuário' : 'Alterar Usuário'"
+  [showBtn]="false"
+></app-header-page>
+
+<div class="content">
+  <div class="card-content padding-field">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <label
+                [class.invalid-text-field]="
+                  sendform && !form.controls['name'].valid
+                "
+                >Nome<span class="required">*</span></label
+              >
+              <input
+                placeholder="Informe o nome"
+                formControlName="name"
+                type="text"
+                maxlength="150"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <label
+                [class.invalid-text-field]="
+                  sendform && !form.controls['lastName'].valid
+                "
+                >Sobrenome<span class="required">*</span></label
+              >
+              <input
+                placeholder="Informe o sobrenome"
+                formControlName="lastName"
+                type="text"
+                maxlength="150"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <label
+                [class.invalid-text-field]="
+                  sendform && !form.controls['email'].valid
+                "
+                >E-mail<span class="required">*</span></label
+              >
+              <input
+                placeholder="Informe o e-mail"
+                formControlName="email"
+                type="text"
+                maxlength="150"
+                class="form-control"
+                (blur)="verifyExistsEmail()"
+              />
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <label
+                [class.invalid-text-field]="
+                  sendform && !form.controls['profileId'].valid
+                "
+                >Perfil<span class="required">*</span></label
+              >
+              <ng-select
+                placeholder="Selecione o Perfil"
+                [items]="lstProfiles"
+                bindLabel="description"
+                bindValue="value"
+                formControlName="profileId"
+                name="profile"
+              >
+              </ng-select>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isAdd" class="row margin-input">
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <i
+                style="font-size: 21px"
+                *ngIf="showPassword"
+                class="bi bi-eye-fill"
+                [class.active]="showPassword"
+                (click)="showPassword = !showPassword"
+              ></i>
+              <i
+                style="font-size: 21px"
+                *ngIf="!showPassword"
+                class="bi bi-eye-slash-fill"
+                [class.active]="showPassword"
+                (click)="showPassword = !showPassword"
+              ></i>
+              <label
+                class="float-left"
+                [class.required]="sendform && !form.controls['password'].valid"
+                >Senha <span class="required">*</span></label
+              >
+              <input
+                style="padding-left: 50px"
+                class="form-control"
+                placeholder="Informe a senha"
+                formControlName="password"
+                [ngClass]="{ typepassword: !showPassword }"
+                maxlength="50"
+              />
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+              <i
+                style="font-size: 21px"
+                *ngIf="showPasswordConfirmation"
+                class="bi bi-eye-fill"
+                [class.active]="showPasswordConfirmation"
+                (click)="showPasswordConfirmation = !showPasswordConfirmation"
+              ></i>
+              <i
+                style="font-size: 21px"
+                *ngIf="!showPasswordConfirmation"
+                class="bi bi-eye-slash-fill"
+                [class.active]="showPasswordConfirmation"
+                (click)="showPasswordConfirmation = !showPasswordConfirmation"
+              ></i>
+              <label
+                class="float-left"
+                [class.required]="
+                  form.controls['password'].value !==
+                    form.controls['passwordConfirmation'].value ||
+                  (sendform && !form.controls['passwordConfirmation'].valid)
+                "
+                >Confirmação de senha<span class="required">*</span></label
+              >
+              <input
+                [readonly]="form.controls['password'].invalid"
+                style="padding-left: 50px"
+                class="form-control"
+                placeholder="Confirme sua senha"
+                formControlName="passwordConfirmation"
+                [type]="showPasswordConfirmation ? 'text' : 'password'"
+                maxlength="50"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-form">
+        <div class="row">
+          <div class="col-sm-12 col-md-10 col-lg-10">
+            <button class="btn btn-default" type="button" routerLink="/users">
+              Cancelar
+            </button>
+          </div>
+          <div class="col-sm-12 col-md-2 col-lg-2">
+            <button
+              class="btn btn-success"
+              style="float: right"
+              type="submit"
+              (click)="save()"
+            >
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

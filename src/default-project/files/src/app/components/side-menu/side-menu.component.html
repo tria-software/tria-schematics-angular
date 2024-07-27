@@ -1,0 +1,24 @@
+<div class="side-menu" [class]="{ active: isMenuActive }">
+  <div class="side-header">
+    <span class="toolbar-title" style="display: inline-block">
+      <div class="logo shift">
+        <img src="assets/img/default-logo-alterar.png" />
+      </div>
+    </span>
+  </div>
+  <div class="toprow"></div>
+
+  <div class="content-side">
+    <app-side-nav
+      (closeMenu)="changeMenu($event)"
+      *ngFor="let mod of navModules"
+      [item]="mod"
+      [isMod]="true"
+    ></app-side-nav>
+  </div>
+</div>
+<div
+  *ngIf="isMenuActive"
+  (click)="changeMenu(true)"
+  class="side-menu-background"
+></div>

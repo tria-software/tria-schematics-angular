@@ -1,0 +1,87 @@
+.img-login {
+  width: 35px;
+  border-radius: 16px;
+}
+
+.div-dropdown {
+  cursor: pointer;
+  width: 5em;
+  margin-right: -2em;
+}
+
+.dropdown-menu {
+  display: block;
+  position: fixed;
+  right: 16px;
+  top: 55px;
+  left: auto;
+  z-index: 1;
+  font-size: 14px;
+  min-width: 300px;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.dropdown-menu::before {
+  left: 26em;
+}
+
+.overlay-dropdown {
+  background: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 0;
+}
+
+.width96 {
+  width: 96%;
+}
+
+.logo {
+  img {
+    width: 190px;
+    float: right;
+  }
+}
+
+.user-toogle {
+  float: right;
+  cursor: pointer;
+
+  i {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+  }
+
+  .name-user {
+    font-family: "Roboto-Regular", "Roboto";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.warning-off-line {
+  width: 100%;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  background: #e9b500 !important;
+
+  p {
+    padding-top: 12px;
+    text-align: center;
+    color: #fff !important;
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../assets/scss/custom/colors";
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px !important;
+  color: $btn-success;
+  width: 100%;
+  margin-bottom: 0px !important;
+}
+
+.action-row {
+  margin-top: 2em;
+  margin-bottom: -4em;
+  margin-left: 2em;
+  margin-right: 1em;
+}
+
+.btn-new-title {
+  float: right;
+  width: auto;
+  height: 3em;
+  min-width: 10em;
+}

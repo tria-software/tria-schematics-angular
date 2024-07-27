@@ -1,0 +1,43 @@
+@import "colors";
+
+.input-date {
+  background-color: white !important;
+  cursor: pointer !important;
+  width: 17em !important;
+  display: inline !important;
+  margin-right: 12px !important;
+  display: block !important;
+  padding: 10px 18px 10px 35px !important;
+}
+
+.ngb-dp-weekday {
+  background-color: $color_success !important;
+}
+
+.ngb-dp-weekday,
+.ngb-dp-week-number {
+  color: white !important;
+  font-style: normal !important;
+}
+
+:host ::ng-deep .bg-primary {
+  background-color: $color_success !important;
+}
+
+.ngb-dp-navigation-chevron {
+  color: #818181 !important;
+}
+
+.icon-input {
+  position: absolute;
+  top: 33px;
+  left: 24px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.input-filter-ate {
+  .dropdown-menu::before {
+    left: 80px !important;
+  }
+}

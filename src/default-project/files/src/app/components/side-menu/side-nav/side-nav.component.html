@@ -1,0 +1,65 @@
+<!-- MODULOS -->
+<a
+  *ngIf="isMod"
+  class="label"
+  [ngStyle]="{ 'padding-left': depth + 'px' }"
+  (click)="onItemSelected(item, true)"
+  [class]="{ expanded: expanded }"
+>
+  <div style="display: flex; margin-top: 6px">
+    {{ item?.label }}
+    <span fxFlex *ngIf="item?.children && item?.children?.length">
+      <i
+        class="material-icons"
+        [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"
+      >
+        expand_more
+      </i>
+    </span>
+  </div>
+</a>
+
+<!-- SUBMODULOS -->
+<a
+  *ngIf="!item?.link && !isMod"
+  class="label"
+  [ngStyle]="{ 'padding-left': depth + 'px' }"
+  (click)="onItemSelected(item, false, true)"
+  [class]="{ expanded: expanded }"
+>
+  <div style="display: flex; margin-top: 6px">
+    {{ item?.label }}
+    <span fxFlex *ngIf="item?.children && item?.children?.length">
+      <i
+        class="material-icons"
+        [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"
+      >
+        expand_more
+      </i>
+    </span>
+  </div>
+</a>
+
+<!-- TELA -->
+<a
+  *ngIf="item?.link && !isMod"
+  class="label"
+  [ngStyle]="{ 'padding-left': depth + 'px' }"
+  [ngClass]="{ 'padding-left': depth + 'px' }"
+  (click)="onChildSelected()"
+  [routerLink]="item?.link"
+  [ngClass]="{ expanded: expanded, 'disabledclick': item?.link === '/home' }"
+>
+  <div style="display: flex; margin-top: 6px">{{ item?.label }}</div>
+</a>
+
+<div *ngIf="expandedMod || expandedSub || expanded">
+  <app-side-nav
+    class="subitems"
+    *ngFor="let child of item?.children"
+    [item]="child"
+    [depth]="(depth ?? 0) + 12"
+    (closeMenu)="onChildSelected()"
+  >
+  </app-side-nav>
+</div>

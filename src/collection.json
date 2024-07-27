@@ -1,0 +1,45 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "default-project": {
+      "description": "Create default project",
+      "factory": "./default-project/index",
+      "schema": "./default-project/schema.json"
+    },
+    "create-components": {
+      "description": "Create all components",
+      "factory": "./create-components/index",
+      "schema": "./create-components/schema.json"
+    },
+    "component": {
+      "description": "Create component main/default",
+      "factory": "./component/index",
+      "schema": "./component/schema.json"
+    },
+    "filter": {
+      "description": "Create component filter",
+      "factory": "./filter/index",
+      "schema": "./filter/schema.json"
+    },
+    "new-edit": {
+      "description": "Create component new/edit",
+      "factory": "./new-edit/index",
+      "schema": "./new-edit/schema.json"
+    },
+    "table-grid": {
+      "description": "Create component table-grid",
+      "factory": "./table-grid/index",
+      "schema": "./table-grid/schema.json"
+    },
+    "model": {
+      "description": "Create models",
+      "factory": "./model/index",
+      "schema": "./model/schema.json"
+    },
+    "service": {
+      "description": "Create service",
+      "factory": "./service/index",
+      "schema": "./service/schema.json"
+    }
+  }
+}

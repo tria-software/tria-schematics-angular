@@ -1,0 +1,10 @@
+<div class="filter-menu" [ngClass]="{ active: isMenuActive }">
+  <div class="filter-header">
+    <h1 class="title">Selecionar Colunas</h1>
+    <i class="material-icons close" (click)="closeFilter()">close</i>
+  </div>
+
+  <div class="content-filter">
+    <ng-content></ng-content>
+  </div>
+</div>

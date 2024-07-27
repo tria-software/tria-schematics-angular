@@ -1,0 +1,4 @@
+export class <%= classify(name)%>DTO {
+  id: number = 0;
+  createDate?: Date = undefined;
+}

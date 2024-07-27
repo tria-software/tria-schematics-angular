@@ -1,0 +1,110 @@
+.no-register {
+  text-align: center;
+}
+
+.table {
+  margin-top: 15px;
+}
+
+.btn-excel {
+  margin-right: 2em;
+  cursor: pointer;
+  width: 5%;
+}
+
+.span-search {
+  margin-left: 10px;
+}
+
+.dot-green {
+  height: 15px;
+  width: 15px;
+  background-color: $btn-success;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red {
+  height: 15px;
+  width: 15px;
+  background-color: $invalid-field;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-yellow {
+  height: 15px;
+  width: 15px;
+  background-color: $btn-warning;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.edit {
+  margin-right: 15px;
+  color: $btn-success;
+}
+
+.delete {
+  color: $btn-danger;
+}
+
+.power {
+  color: $btn-success;
+  font-size: 20px !important;
+}
+
+.table button {
+  background: none;
+  border: none;
+  outline: none !important;
+}
+
+@media only screen and (max-width: 799px) {
+  .btn-excel {
+    width: 15%;
+  }
+
+  .filters-group input {
+    width: 97% !important;
+  }
+
+  .edit {
+    margin-right: 5px;
+  }
+}
+
+.filter-applied {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $btn-warning;
+  position: absolute;
+}
+
+.margin-group-btn-filter {
+  margin-top: 21px;
+}
+
+.white-content .table > thead > tr > th,
+.white-content .table > tbody > tr > th,
+.white-content .table > tfoot > tr > th,
+.white-content .table > thead > tr > td,
+.white-content .table > tbody > tr > td,
+.white-content .table > tfoot > tr > td {
+  border-bottom: transparent;
+}
+
+// tbody,
+// td,
+// tfoot,
+// th,
+// thead,
+// tr {
+//   border-bottom: 2px solid rgba(34, 42, 66, 0.2) !important;
+// }

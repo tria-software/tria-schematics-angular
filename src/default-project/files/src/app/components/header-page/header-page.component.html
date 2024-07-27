@@ -1,0 +1,22 @@
+<div class="row action-row">
+  <div class="col-md-8 mt-4 mb-4">
+    <h1 class="title">{{ title }}</h1>
+  </div>
+  <div class="col-md-4 mt-3" *ngIf="showBtn">
+    <button
+      *ngIf="!isCallMethod"
+      class="btn btn-primary btn-new btn-new-title"
+      routerLink="{{ urlBtn }}"
+    >
+      {{ titleBtn }}
+    </button>
+
+    <button
+      *ngIf="isCallMethod"
+      class="btn btn-primary btn-new btn-new-title"
+      (click)="sendMethod()"
+    >
+      {{ titleBtn }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<app-header-page
+  [title]="isAdd ? 'Novo <%= classify(name)%>' : 'Alterar <%= classify(name)%>'"
+  [showBtn]="false"
+></app-header-page>
+
+<div class="content">
+  <div class="card-content padding-field">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <h4>Dados Principais</h4>
+        <div class="form-group form-margintop">
+          <div class="row margin-input">
+            <div class="col-sm-12 col-md-6 col-lg-2">
+              <div class="form-group">
+                <label>Campo Exemplo</label>
+                <input
+                  placeholder="Preenchimento automático"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-form">
+        <div class="row">
+          <div class="col-sm-12 col-md-10 col-lg-9">
+            <button class="btn btn-default" type="button" routerLink="/<%= dasherize(name)%>">
+              Cancelar
+            </button>
+          </div>
+          <div class="col-sm-12 col-md-2 col-lg-3">
+            <button
+              class="btn btn-success"
+              style="float: right"
+              type="submit"
+              (click)="save()"
+            >
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+import { Component } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { AnalyzeModulePermission } from "src/app/_helpers/analyze-module-permission";
+import { GlobalValuesService } from "src/app/_service/global.values.service";
+import { HelpersService } from "src/app/_service/helpers.service";
+import { GenericModalComponent } from "src/app/components/generic-modal/generic-modal.component";
+import { GenericModalDTO } from "src/app/components/generic-modal/model/generic-modal-dto";
+import { <%= classify(name)%>Filter } from "../model/<%= dasherize(name)%>-filter";
+import { <%= classify(name)%>List } from "../model/<%= dasherize(name)%>-list";
+import { <%= classify(name)%>Service } from "../service/<%= dasherize(name)%>.service";
+
+@Component({
+  selector: "app-<%= dasherize(name)%>-table-grid",
+  templateUrl: "./<%= dasherize(name)%>-table-grid.component.html",
+  styleUrls: ["./<%= dasherize(name)%>-table-grid.component.scss"],
+})
+export class <%= classify(name)%>TableGridComponent {
+  public filter: <%= classify(name)%>Filter = {};
+  public tableList: <%= classify(name)%>List[] = [];
+  public tableRequestReturned = false;
+  public totalItemsCount = 0;
+  public itemsPerPageFixed = 10;
+  public selectedPageIndex = 0;
+  isProfileAdmin: boolean = false;
+
+  constructor(
+    private toastr: ToastrService,
+    private service: <%= classify(name)%>Service,
+    public global: GlobalValuesService,
+    public router: Router,
+    public dialog: MatDialog,
+    private access: AnalyzeModulePermission,
+    private helpers: HelpersService
+  ) { }
+
+  ngOnInit() {
+    if (!this.access.haveAccessModule("<%= dasherize(name)%>")) return;
+
+    this.resetFilter();
+    this.getTableDataByPage(0);
+  }
+
+  resetFilter() {
+    this.filter = {
+      pageIndex: 0,
+      pageSize: this.itemsPerPageFixed,
+      search: undefined,
+    };
+  }
+
+  getTableDataByPage(index: any) {
+    this.tableRequestReturned = false;
+    this.filter.pageIndex = Number(index);
+    this.selectedPageIndex = Number(index);
+    this.getList(this.filter);
+  }
+
+  changeQty(size: any) {
+    this.filter.pageSize = Number(size);
+    this.getTableDataByPage(0);
+  }
+
+  getList(objFilter: <%= classify(name)%>Filter) {
+    this.filter = objFilter;
+    this.global.setLoading(true);
+    this.service.getAll(objFilter).subscribe(
+      (result: any) => {
+        this.totalItemsCount = result.count;
+        this.tableList = result.data;
+        this.tableRequestReturned = true;
+        this.global.setLoading(false);
+      },
+      (error: any) => {
+        console.error("getList", error);
+        this.tableRequestReturned = true;
+        this.global.setLoading(false);
+        console.log(error);
+        this.toastr.error("Erro ao retornar <%= classify(name)%>", "Atenção!");
+      }
+    );
+  }
+
+  edit(item: any) {
+    this.router.navigate(["/<%= dasherize(name)%>-edit", item.id]);
+  }
+
+  activateDisableDelete(item: <%= classify(name)%>List, isDelete: boolean = false) {
+    const modal = new GenericModalDTO();
+    modal.message = `Deseja realmente ${isDelete ? "deletar" : "desativar"} `;
+    modal.messageDelete = isDelete ? "O processo não poderá ser desfeito!" : "";
+    modal.type = "error";
+
+    const dialogRef = this.dialog.open(GenericModalComponent, {
+      disableClose: true,
+      hasBackdrop: true,
+      width: "500px",
+      height: "200px",
+      data: modal,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.activateDisableDelete<%= classify(name)%>(item, isDelete);
+      }
+    });
+  }
+
+  activateDisableDelete<%= classify(name)%>(item: any, isDelete: boolean = false) {
+    this.global.setLoading(true);
+
+    if (!isDelete) {
+      this.service.activateDisable(item.id).subscribe(
+        (result) => {
+          this.getTableDataByPage(0);
+          this.global.setLoading(false);
+
+          if (result) {
+            this.toastr.success("<%= classify(name)%> inativado com sucesso!", "Atenção!");
+          } else {
+            this.toastr.error("Erro ao inativar <%= classify(name)%>!", "Atenção!");
+          }
+        },
+        (error) => {
+          this.global.setLoading(false);
+          console.log(error);
+        }
+      );
+    } else {
+      this.service.delete(item.id).subscribe(
+        (result) => {
+          this.getTableDataByPage(0);
+          this.global.setLoading(false);
+
+          if (result) {
+            this.toastr.success("<%= classify(name)%> deletado com sucesso!", "Atenção!");
+          } else {
+            this.toastr.error("Erro ao deletar <%= classify(name)%>!", "Atenção!");
+          }
+        },
+        (error) => {
+          this.global.setLoading(false);
+          console.log(error);
+        }
+      );
+    }
+  }
+}

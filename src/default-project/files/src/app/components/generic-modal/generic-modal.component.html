@@ -1,0 +1,59 @@
+<div class="card white-content">
+  <div
+    class="card-header color"
+    [class.backgroundSuccess]="data.type == 'success'"
+    [class.backgroundError]="data.type == 'error'"
+  >
+    <h4
+      class="card-title"
+      style="
+        width: 95%;
+        padding: 0px;
+        color: white;
+        padding-top: 10px;
+        font-weight: bold;
+      "
+    >
+      {{ data.title }}
+    </h4>
+    <button
+      id="btn-close-modal"
+      type="button"
+      class="close"
+      (click)="closeModal()"
+      data-dismiss="modal"
+      aria-label="Close"
+      style="color: white; line-height: 30px;width: 10%;"
+    >
+      <i class="material-icons" style="font-weight: bold">close</i>
+    </button>
+  </div>
+  <div class="card-body" style="height: 150px">
+    <div style="margin: 0 auto; padding-top: 60px">
+      {{ data.message }}<span style="font-weight: bold">{{ data.item }}</span
+      ><br />
+      <span *ngIf="data.messageDelete" style="color: red">{{
+        data.messageDelete
+      }}</span>
+    </div>
+  </div>
+  <div class="card-footer text-center">
+    <div class="row" style="margin-top: 20px">
+      <div class="col-6">
+        <button (click)="closeModal()" class="btn btn-default">
+          {{ data.descriptionBtnCancel }}
+        </button>
+      </div>
+      <div class="col-6">
+        <button
+          class="btn btn-default"
+          (click)="okClick()"
+          [class.backgroundSuccess]="data.type == 'success'"
+          [class.backgroundError]="data.type == 'error'"
+        >
+          {{ data.descriptionBtnConfirm }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

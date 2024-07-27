@@ -1,0 +1,81 @@
+<div class="content">
+  <div class="row">
+    <div class="col-12 col-lg-12">
+      <div class="filters-group">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-content">
+        <table class="table table-responsive-md">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Descrição</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="tableList.length === 0 && tableRequestReturned">
+            <tr class="no-register frist-td">
+              <td colspan="100%">
+                <span> Nenhum registro encontrado </span>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr *ngFor="let item of tableList">
+              <td></td>
+              <td>{{ item.description }}</td>
+              <td class="text-center">
+                <span *ngIf="item.status" class="dot-green center"></span>
+                <span *ngIf="!item.status" class="dot-red center"></span>
+              </td>
+              <td class="text-center">
+                <div
+                  *ngIf="!item.isProfileAdmin"
+                >
+                  <i
+                    *ngIf="item.status"
+                    class="bi bi-pencil-fill icon edit"
+                    matTooltip="Clique para Editar"
+                    (click)="edit(item)"
+                  >
+                  </i>
+
+                  <i
+                    class="{{
+                      item.status
+                        ? 'bi bi-trash icon delete'
+                        : 'bi bi-power icon power'
+                    }}"
+                    matTooltip="{{
+                      'Clique para ' + (item.status ? 'Desativar' : 'Ativar')
+                    }}"
+                    (click)="activateDisable(item)"
+                  >
+                  </i>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <grid-pagination
+    [tableRequestReturned]="tableRequestReturned"
+    [tableListLength]="tableList.length"
+    [totalItemsCountUpdate]="totalItemsCount"
+    [selectedPageIndex]="selectedPageIndex"
+    [itemsPerPageFixed]="itemsPerPageFixed"
+    (pageRequested)="getTableDataByPage($event)"
+    (itemsPerPageRequested)="changeQty($event)"
+  >
+  </grid-pagination>
+</div>

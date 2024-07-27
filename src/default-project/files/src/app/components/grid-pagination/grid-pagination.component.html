@@ -1,0 +1,91 @@
+<div class="pagination" [class]="{ disabled: !tableRequestReturned }">
+  <div class="itens-per-page" *ngIf="tableRequestReturned">
+    <div *ngIf="showItensPerPage">
+      <span>Exibir</span>
+      <span class="showing">
+        <select
+          id="listQtyPerPage"
+          [(ngModel)]="selectedOption"
+          (change)="onChange()"
+          class="select-page"
+        >
+          <option *ngFor="let item of options" [ngValue]="item">
+            {{ item }}
+          </option>
+        </select>
+      </span>
+      <span> itens por página</span>
+    </div>
+    <div
+      [ngStyle]="{ 'margin-left': showItensPerPage ? '' : '0px' }"
+      class="results"
+    >
+      <span>Exibindo</span>
+      <span class="showing">{{ tableListLength }}</span>
+      <span>de</span>
+      <span class="of">{{ totalItemsCount }}</span>
+      <span>Resultados</span>
+    </div>
+  </div>
+  <div
+    [class.margin-grid-number]="marginGridNumber"
+    class="page-numbers"
+    *ngIf="totalItemsCount > itemsPerPageFixed"
+  >
+    <span
+      class="double-arrow arrows-left"
+      id="click-first-page"
+      (click)="showFirstPage()"
+    >
+      <i class="material-icons" [class]="{ disabled: selectedPageIndex === 0 }"
+        >keyboard_arrow_left</i
+      >
+      <i class="material-icons" [class]="{ disabled: selectedPageIndex === 0 }"
+        >keyboard_arrow_left</i
+      >
+    </span>
+    <span
+      class="arrow arrow-left"
+      id="click-previous-page"
+      (click)="showPreviousPage()"
+    >
+      <i class="material-icons" [class]="{ disabled: showingFirstPage }"
+        >keyboard_arrow_left</i
+      >
+    </span>
+
+    <span
+      *ngFor="let page of pagesToDisplay"
+      id="click-page-{{ page.pageIndex }}"
+      (click)="emitPageRequested(page.pageIndex)"
+      [class]="{ active: page.pageIndex === selectedPageIndex }"
+      >{{ page.number }}</span
+    >
+
+    <span
+      class="arrow arrow-right"
+      id="click-next-page"
+      (click)="showNextPage()"
+    >
+      <i class="material-icons" [class]="{ disabled: showingLastPage }"
+        >keyboard_arrow_right</i
+      >
+    </span>
+    <span
+      class="double-arrow arrows-right"
+      id="click-last-page"
+      (click)="showLastPage()"
+    >
+      <i
+        class="material-icons"
+        [class]="{ disabled: selectedPageIndex === totalPages - 1 }"
+        >keyboard_arrow_right</i
+      >
+      <i
+        class="material-icons"
+        [class]="{ disabled: selectedPageIndex === totalPages - 1 }"
+        >keyboard_arrow_right</i
+      >
+    </span>
+  </div>
+</div>

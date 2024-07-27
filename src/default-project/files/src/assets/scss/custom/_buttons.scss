@@ -1,0 +1,136 @@
+@import "./colors";
+
+.btn-success {
+  color: #fff;
+  background-color: $btn-success;
+  border-color: $btn-success;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #1e4a26;
+  border-color: #1e4a26;
+}
+
+.btn-default {
+  background-color: #818181;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #6b6b6b;
+  border-color: #6b6b6b;
+}
+
+.btn-yellow {
+  background: #e9b500 !important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.54) !important;
+  border-radius: 3px !important;
+  font-size: 14px !important;
+  width: 140px !important;
+  padding: 5px 0 5px 0 !important;
+}
+
+.btn-filter {
+  background: $btn-primary !important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.54) !important;
+  border-radius: 3px !important;
+  font-size: 14px !important;
+  width: 140px !important;
+  padding: 5px 0 5px 0 !important;
+}
+
+.btn-filter:hover {
+  color: #fff;
+  background-color: #004a61 !important;
+  border-color: #004a61;
+}
+
+.btn-synchronize {
+  background: $btn-primary !important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.54) !important;
+  border-radius: 3px !important;
+  font-size: 14px !important;
+  width: 140px !important;
+  padding: 5px 0 5px 0 !important;
+}
+
+.btn-synchronize:hover {
+  color: #fff;
+  background-color: #004a61 !important;
+  border-color: #004a61;
+}
+
+.btn-delete {
+  background: $btn-danger !important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.54) !important;
+  border-radius: 3px !important;
+  font-size: 14px !important;
+  width: 140px !important;
+  padding: 5px 0 5px 0 !important;
+}
+
+.btn-delete:hover {
+  color: #fff;
+  background-color: #9c071b !important;
+  border-color: #9c071b;
+}
+
+.buttons-form button {
+  width: 13em;
+  margin-top: 12px;
+}
+
+a {
+  color: #757575 !important;
+  font-weight: 300;
+}
+
+.btn-new {
+  width: 100px;
+  height: 30px;
+  left: 1388px;
+  top: 103px;
+  background: $btn-success;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  cursor: pointer;
+
+  span {
+    width: 35px;
+    left: 1393px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+    float: left;
+  }
+
+  i {
+    left: 9.38%;
+    right: 9.38%;
+    top: 9.38%;
+    bottom: 9.38%;
+    color: #ffffff;
+    float: right;
+  }
+}
+
+.btn-new:hover {
+  color: #fff;
+  background-color: #1e4a26;
+  border-color: #1e4a26;
+}
+
+@media only screen and (max-width: 500px) {
+  .buttons-form button {
+    width: 100% !important;
+  }
+}

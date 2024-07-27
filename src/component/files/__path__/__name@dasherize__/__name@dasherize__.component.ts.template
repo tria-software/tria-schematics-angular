@@ -1,0 +1,101 @@
+import { Component, ViewChild } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { MatDialog } from "@angular/material/dialog";
+import { AnalyzeModulePermission } from "src/app/_helpers/analyze-module-permission";
+import { GlobalValuesService } from "src/app/_service/global.values.service";
+import { FilterMenuComponent } from "src/app/components/filter-menu/filter-menu.component";
+import { <%= classify(name)%>Filter } from "./model/<%= dasherize(name)%>-filter";
+import { <%= classify(name)%>NewEditComponent } from "./<%= dasherize(name)%>-new-edit/<%= dasherize(name)%>-new-edit.component";
+import { <%= classify(name)%>TableGridComponent } from "./<%= dasherize(name)%>-table-grid/<%= dasherize(name)%>-table-grid.component";
+import { <%= classify(name)%>Service } from "./service/<%= dasherize(name)%>.service";
+
+@Component({
+  selector: 'app-<%= dasherize(name)%>',
+  templateUrl: './<%= dasherize(name)%>.component.html',
+  styleUrls: ['./<%= dasherize(name)%>.component.scss']
+})
+export class <%= classify(name)%>Component {
+  search?: string = undefined;
+  showMenuFilter: boolean = false;
+
+  @ViewChild(FilterMenuComponent, { static: false })
+  filterMenuComponent?: FilterMenuComponent;
+
+  @ViewChild(<%= classify(name)%>TableGridComponent, { static: false })
+  tableGrid?: <%= classify(name)%>TableGridComponent;
+
+  filter: any;
+  isFilterApplied: boolean = false;
+
+  constructor(
+    private toastr: ToastrService,
+    private global: GlobalValuesService,
+    private service: <%= classify(name)%>Service,
+    public dialog: MatDialog,
+    private access: AnalyzeModulePermission
+  ) { }
+
+  ngOnInit() {
+    if (!this.access.haveAccessModule('<%= dasherize(name)%>')) return;
+  }
+
+  changeFilterMenu() {
+    this.showMenuFilter = false;
+    this.filterMenuComponent?.showMenu(false);
+  }
+
+  applyFilter(filterObject?: any) {
+    this.isFilterApplied = true;
+    this.showMenuFilter = false;
+    this.filterMenuComponent?.showMenu(false);
+    this.filter = filterObject;
+    this.tableGrid?.getList(filterObject);
+  }
+
+  showFilter() {
+    this.showMenuFilter = true;
+    this.filterMenuComponent?.showMenu(true);
+  }
+
+  executeSearch() {
+    this.tableGrid?.resetFilter();
+    this.filter = this.tableGrid?.filter;
+    this.filter.search = this.search;
+    this.tableGrid?.getList(this.filter);
+  }
+
+  resetFilter(filterObject?: <%= classify(name)%>Filter) {
+    this.search = undefined;
+    this.applyFilter(filterObject);
+    this.isFilterApplied = false;
+  }
+
+  getFilter(): any {
+    if (!this.filter) {
+      return this.tableGrid?.filter;
+    }
+
+    return this.filter;
+  }
+
+  exportExcel() {
+    this.global.setLoading(true);
+    this.service.exportExcel(this.getFilter(), "<%= classify(name)%>").subscribe(
+      (node: any) => {
+        this.global.setLoading(false);
+        const url = window.URL.createObjectURL(node.data);
+        const hiddenLink = document.createElement("a");
+        document.body.appendChild(hiddenLink);
+        hiddenLink.setAttribute("style", "display: none");
+        hiddenLink.href = url;
+        hiddenLink.download = node.filename;
+        hiddenLink.click();
+        window.URL.revokeObjectURL(url);
+        hiddenLink.remove();
+      },
+      (error) => {
+        this.global.setLoading(false);
+      }
+    );
+  }
+}

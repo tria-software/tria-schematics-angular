@@ -1,0 +1,41 @@
+<div
+  class="card-content"
+  style="box-shadow: none !important; overflow-x: initial !important"
+>
+  <table class="table table-responsive-md">
+    <thead>
+      <tr>
+        <th class="text-center" style="width: 4%"></th>
+        <th>Colunas</th>
+      </tr>
+    </thead>
+
+    <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+      <tr *ngFor="let item of listColumns" cdkDrag class="box">
+        <td
+          class="text-center"
+          style="
+            border-bottom: 1px solid rgba(34, 42, 66, 0.2);
+            border-top: transparent;
+          "
+        >
+          <input
+            [(ngModel)]="item.isShow"
+            class="form-check-input"
+            type="checkbox"
+          />
+        </td>
+
+        <td
+          style="
+            border-bottom: 1px solid rgba(34, 42, 66, 0.2);
+            display: block;
+            border-top: transparent;
+          "
+        >
+          {{ item.description }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

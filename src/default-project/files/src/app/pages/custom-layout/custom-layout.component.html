@@ -1,0 +1,120 @@
+<app-header-page
+  [title]="'CustomLayout'"
+  [urlBtn]="'/custom-layout-new'"
+  [titleBtn]="'Novo CustomLayout'"
+></app-header-page>
+
+<app-custom-layout-table-grid [listColumns]="listColumnsChange">
+  <div class="filters-groug">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <span class="span-search">Pesquisa Rápida</span><br />
+        <input
+          class="search-input"
+          type="text"
+          placeholder="Enter para filtrar ..."
+          [(ngModel)]="search"
+          (keyup.enter)="executeSearch()"
+        />
+        <button
+          class="btn-filter btn-actions btn-search"
+          style="display: none; margin-left: 10px"
+          (click)="executeSearch()"
+        >
+          Pesquisar
+        </button>
+      </div>
+      <div class="col-sm-12 col-lg-6 text-right margin-group-btn-filter">
+        <img
+          [ngClass]="{ disabled: (this.tableGrid?.totalItemsCount ?? 0) === 0 }"
+          class="btn-excel"
+          matTooltip="Exportar para Excel"
+          (click)="exportExcel()"
+          src="../../../assets/img/excel-icon.png"
+        />
+        <button class="btn-filter btn-actions" (click)="showFilter()">
+          Filtros
+          <span *ngIf="isFilterApplied" class="filter-applied"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <app-accordion
+    [startsCollapsed]="true"
+    [title]="'Colunas'"
+    style="background-color: white !important; margin-top: 10px"
+  >
+    <div class="panel-body">
+      <div class="filters-group" style="box-shadow: none">
+        <div class="row">
+          <div class="col-sm-12 col-md-8 col-lg-6">
+            <span>Layouts</span><br />
+            <ng-select
+              appendTo="body"
+              placeholder="Selecione o Layout desejado"
+              [items]="listLayouts.data"
+              [(ngModel)]="selectedLayoutId"
+              bindLabel="name"
+              bindValue="id"
+              (change)="onChangeLayout($event)"
+            >
+            </ng-select>
+          </div>
+          <div
+            class="col-sm-12 col-lg-6 text-right margin-group-btn-filter"
+            style="padding-right: 0"
+          >
+            <button
+              *ngIf="selectedLayoutId"
+              class="btn-delete btn-actions"
+              style="margin-left: 10px"
+              (click)="deleteLayout()"
+            >
+              Deletar Layout
+            </button>
+            <button
+              class="btn-actions btn-filter"
+              style="margin-left: 10px"
+              (click)="openModalAdd()"
+            >
+              {{ textButtonLayout }}
+            </button>
+
+            <button
+              class="btn-actions btn-filter"
+              style="margin-left: 10px"
+              (click)="showColumns()"
+            >
+              Colunas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-accordion>
+</app-custom-layout-table-grid>
+
+<app-filter-menu (closeBackgroundFilter)="changeFilterMenu()">
+  <app-custom-layout-filter
+    (filterObject)="applyFilter($event)"
+    (executeResetFilter)="resetFilter($event)"
+  >
+  </app-custom-layout-filter>
+</app-filter-menu>
+<div
+  *ngIf="showMenuFilter"
+  (click)="changeFilterMenu()"
+  class="filter-menu-background"
+></div>
+
+<app-layout (closeBackgroundFilter)="changeColumnsMenu()">
+  <app-table-grid-generic-list [listColumns]="listColumnsChange">
+  </app-table-grid-generic-list>
+</app-layout>
+
+<div
+  *ngIf="showColumnsMenu"
+  (click)="changeColumnsMenu()"
+  class="filter-menu-background"
+></div>

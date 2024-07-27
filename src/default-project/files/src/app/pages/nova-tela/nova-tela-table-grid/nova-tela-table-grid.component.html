@@ -1,0 +1,72 @@
+<div class="content">
+  <div class="row">
+    <div class="col-12 col-lg-12">
+      <div class="filters-group">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card-content">
+        <table class="table table-responsive-md">
+          <thead>
+            <tr>
+              <th>
+              </th>
+              <th>Campo de Exemplo</th>
+              <th class="text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="tableList?.length === 0 && tableRequestReturned">
+            <tr class="no-register frist-td">
+              <td colspan="100%">
+                <span> Nenhum registro encontrado </span>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr
+              *ngFor="let item of tableList"
+            >
+              <td class="text-center">
+              </td>
+              <td>Coloque aqui a propriedade do seu item</td>
+              <td class="text-center">
+                <div>
+                  <i
+                    class="bi bi-pencil-fill icon edit"
+                    matTooltip="Clique para Editar"
+                    (click)="edit(item)"
+                  >
+                  </i>
+                  <i
+                    style="margin-right: 15px"
+                    class="bi bi-trash icon delete"
+                    matTooltip="Clique para Deletar"
+                    (click)="activateDisableDelete(item, true)"
+                  >
+                  </i>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <grid-pagination
+    [showItensPerPage]="true"
+    [tableRequestReturned]="tableRequestReturned"
+    [tableListLength]="tableList != null ? tableList.length : 0"
+    [totalItemsCountUpdate]="totalItemsCount"
+    [selectedPageIndex]="selectedPageIndex"
+    [itemsPerPageFixed]="itemsPerPageFixed"
+    (pageRequested)="getTableDataByPage($event)"
+    (itemsPerPageRequested)="changeQty($event)"
+  >
+  </grid-pagination>
+</div>

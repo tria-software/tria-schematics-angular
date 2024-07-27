@@ -1,0 +1,123 @@
+<form [formGroup]="form">
+  <div class="form-group form-margintop">
+    <h4>Endereço</h4>
+  </div>
+
+  <div class="row margin-input">
+    <div class="col-sm-12 col-md-4 col-lg-2">
+      <div class="form-group">
+        <label [class.required]="sendform && !form.controls['zipCode'].valid"
+          >CEP<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="zipCode"
+          type="text"
+          mask="00000-000"
+          placeholder="Informe o CEP"
+          (blur)="getAddressByCep()"
+        />
+      </div>
+    </div>
+    <div
+      class="col-sm-12 col-md-3 col-lg-2"
+      style="line-height: 8em; height: 80px"
+    >
+      <a
+        href="http://www.buscacep.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"
+        target="_blank"
+      >
+        <span class="span-cep">Não sei o CEP</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row margin-input">
+    <div class="col-sm-12 col-md-12 col-lg-7">
+      <div class="form-group">
+        <label
+          [class.required]="sendform && !form.controls['publicPlace'].valid"
+          >Endereço<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="publicPlace"
+          type="text"
+          maxlength="100"
+          placeholder="Informe o endereço"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-2">
+      <div class="form-group">
+        <label [class.required]="sendform && !form.controls['number'].valid"
+          >Número<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="number"
+          type="text"
+          maxlength="10"
+          placeholder="Informe o número"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="form-group">
+        <label>Complemento</label>
+        <input
+          class="form-control"
+          formControlName="complement"
+          type="text"
+          maxlength="100"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row margin-input">
+    <div class="col-sm-12 col-md-12 col-lg-7">
+      <div class="form-group">
+        <label
+          [class.required]="sendform && !form.controls['neighborhood'].valid"
+          >Bairro<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="neighborhood"
+          type="text"
+          maxlength="100"
+          placeholder="Informe o bairro"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-2">
+      <div class="form-group">
+        <label [class.required]="sendform && !form.controls['state'].valid"
+          >Estado<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="state"
+          type="text"
+          maxlength="2"
+          placeholder="Informe a sigla do estado"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="form-group">
+        <label [class.required]="sendform && !form.controls['city'].valid"
+          >Cidade<span class="required">*</span></label
+        >
+        <input
+          class="form-control"
+          formControlName="city"
+          type="text"
+          maxlength="100"
+          placeholder="Informe a cidade"
+        />
+      </div>
+    </div>
+  </div>
+</form>

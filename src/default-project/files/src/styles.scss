@@ -1,0 +1,257 @@
+@import "assets/scss/custom/colors";
+@import "assets/scss/custom/table-list";
+@import "assets/scss/custom/buttons";
+@import "assets/scss/custom/filter";
+@import "assets/scss/custom/datepicker";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+input[type="date"],
+input[type="time"] {
+  padding-left: 0px !important;
+  text-indent: 5px !important;
+}
+
+.required {
+  color: $invalid-field !important;
+}
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-select {
+  max-width: 100%;
+  width: 100%;
+
+  .ng-select-container,
+  input[type="text"] {
+    cursor: pointer !important;
+    color: black !important;
+  }
+  .ng-select-container {
+    border: 1px solid rgba(29, 37, 59, 0.5);
+  }
+  &:focus-within .ng-select-container {
+    border-color: rgba(29, 37, 59, 0.5) !important;
+    outline: none !important;
+  }
+}
+
+.form-group.has-error {
+  .ng-select-container:focus-within {
+    border: 1px solid red !important;
+  }
+}
+
+.form-group .ng-input input {
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.form-group.has-error .ng-select-container input {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.card-content {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  width: 100%;
+  h4 {
+    font-size: 18px;
+    line-height: 25px;
+    color: $btn-success !important;
+  }
+}
+
+.card-content #more-options:hover {
+  color: #9a9696;
+  transition: 0.3s;
+}
+
+.invalid-field {
+  border: 1px solid $invalid-field !important;
+}
+
+.invalid-text-field {
+  color: $invalid-field !important;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.bs-datepicker-head {
+  background-color: $color_success !important;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: $color_success !important;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: $color_success !important;
+}
+
+.material-icons {
+  cursor: pointer !important;
+}
+
+input:focus,
+select:focus {
+  border: solid 1px #058d9b !important;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: $color_success !important;
+  background-color: #f5f6fa !important;
+  border-color: #e3e3e3 #e3e3e3 $color_success !important;
+  font-weight: 500 !important;
+}
+
+.mat-slide-toggle-content {
+  font-weight: 500 !important;
+  color: #636262;
+  font-size: 13px;
+}
+
+.mat-toolbar {
+  background-color: $color_menu;
+  height: 75px;
+  box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 64px !important;
+  width: 98%;
+  padding-top: 10px !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: $btn-success !important;
+}
+
+.mat-dialog-container {
+  overflow: inherit !important;
+  padding: 0px !important;
+  margin: -35px auto !important;
+  margin-top: -9em !important;
+}
+
+label {
+  font-weight: normal;
+  font-size: 12px;
+  display: block;
+}
+
+.form-control {
+  border-radius: 4px !important;
+}
+
+.form-group {
+  margin-top: 15px;
+}
+
+.padding-field {
+  padding: 30px;
+}
+
+@media only screen and (max-width: 1024px) {
+  button {
+    width: 100%;
+  }
+}
+
+.color {
+  display: inline-flex;
+  height: 5em;
+}
+
+.backgroundSuccess {
+  background-color: $color_success !important;
+}
+
+.backgroundError {
+  background-color: $invalid-field !important;
+}
+
+.card-footer {
+  button {
+    width: 98%;
+  }
+}
+
+.form-check-input {
+  width: 16px !important;
+  height: 16px !important;
+  cursor: pointer;
+}
+
+.form-check-input {
+  position: initial !important;
+  margin-top: 0;
+}
+
+.form-check-input:checked {
+  background-color: $color_success !important;
+  border-color: $color_success !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .form-check-input {
+    margin-left: -0.25rem !important;
+  }
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(43, 102, 54, 0.54) !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: $color_success !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@media only screen and (max-width: 500px) {
+  .cdk-overlay-container {
+    overflow-y: scroll;
+  }
+
+  .btn-search {
+    display: inline !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .btn-search {
+    display: inline !important;
+  }
+}
+
+.search-input::placeholder {
+  font-size: 12px;
+  opacity: 0.3;
+}
