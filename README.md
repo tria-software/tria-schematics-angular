@@ -4,35 +4,53 @@
 
 Este documento fornece instruções sobre como configurar e utilizar os schematics criados para o seu projeto Angular.
 
-## Configuração
+## Crianado novo projeto no Padrão Tria Software
 
-### Instalação dos Schematics
+### Criando novo projeto
+
+Para criar um novo projeto, utilize o seguinte comando:
+
+```bash
+ng n --create-application false <novo-projeto>
+```
+
+### Instalação dos Schematics Angular
+
+Para instalar os schematics angualar, utilize o seguinte comando:
+
+```bash
+npm install -g schematics
+```
+
+O pacote _schematics_ é necessário para rodar os schematics do pacote [tria-schematics](https://www.npmjs.com/package/tria-schematics)
+
+### Instalação dos Schematics Tria
 
 Para instalar os schematics no projeto, utilize o seguinte comando:
 
 ```bash
-TODO
+npm install tria-schematics --save
 ```
 
-## Link dos Schematics
+### Configurar arquivos padrões do projeto
 
-Para realizar o link dos schematics no projeto, utilize o seguinte comando:
+Para configurar os arquivos padrões no projeto, utilize o seguinte comando:
 
 ```bash
-TODO
+schematics ./node_modules/tria-schematics-test:default-project . --dry-run false
 ```
 
-## Build dos Schematics
+### Atualizar as dependências do arquivo
 
-Sempre que um schematic for adicionado ou editado, é necessário realizar o build. Utilize o comando abaixo:
+Para atualizar as dependências do arquivo packge.json do projeto, utilize o seguinte comando:
 
 ```bash
-TODO
+schematics ./node_modules/tria-schematics-test:update-dependencies . --dry-run false
 ```
 
 ## Schematics Disponíveis
 
-Ao todo, existem 7 schematics disponíveis:
+Abaixo está a listagem dos schematics disponíveis:
 
 1. **component** - Cria o componente principal/padrão.
 2. **filter** - Cria um componente de filtro.
@@ -41,13 +59,15 @@ Ao todo, existem 7 schematics disponíveis:
 5. **model** - Cria os DTO e Filters para utilização no projeto.
 6. **service** - Cria serviços no padrão do projeto.
 7. **create-components** - Cria todos os componentes.
+8. **default-project** - Cria os arquivos padrões do projeto.
+9. **update-dependencies** - Atualizar as dependências do arquivo packge.json do projeto.
 
 ## Utilização dos Schematics
 
 Para executar um schematic, utilize o seguinte comando padrão:
 
 ```bash
-yarn ng g tria-schematics:<nome-do-schematic> <nome-do-modulo-ou-component>
+schematics ./node_modules/tria-schematics-test:<nome-do-schematic> <nome-do-modulo-ou-component>
 ```
 
 ### Exemplo
@@ -55,7 +75,7 @@ yarn ng g tria-schematics:<nome-do-schematic> <nome-do-modulo-ou-component>
 Para criar todos os componets de um módulo chamado `nova-tela`, utilize o comando abaixo:
 
 ```bash
-yarn ng g tria-schematics:create-components nova-tela
+schematics ./node_modules/tria-schematics-test:create-components nova-tela
 ```
 
 Certifique-se de substituir `<nome-do-schematic>` pelo nome do schematic desejado e `<nome-do-modulo-ou-component>` pelo nome do módulo/componente que você deseja criar.

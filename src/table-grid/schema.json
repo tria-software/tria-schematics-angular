@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "tria-trable-grid",
-  "title": "Component Filter Schema",
+  "$id": "SchematicsTableGrid",
+  "title": "Component Table Grid Schema",
   "type": "object",
   "properties": {
     "path": {

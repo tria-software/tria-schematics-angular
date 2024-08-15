@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "tria-new-edit",
+  "$id": "SchematicsNewEdit",
   "title": "Component New Edit Schema",
   "type": "object",
   "properties": {

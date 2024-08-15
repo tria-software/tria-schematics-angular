@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "tria-filter",
+  "$id": "SchematicsFilter",
   "title": "Component Filter Schema",
   "type": "object",
   "properties": {

@@ -1,6 +1,6 @@
 {
   "name": "tria-schematics-test",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Tria Schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
