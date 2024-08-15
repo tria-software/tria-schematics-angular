@@ -19,17 +19,17 @@ ng n --create-application false <novo-projeto>
 Para instalar os schematics angualar, utilize o seguinte comando:
 
 ```bash
-npm install -g schematics
+npm install -g @angular-devkit/schematics-cli
 ```
 
-O pacote _schematics_ é necessário para rodar os schematics do pacote [tria-schematics](https://www.npmjs.com/package/tria-schematics)
+O pacote _schematics_ é necessário para rodar os schematics do pacote [@tria-software/schematics-angular](https://www.npmjs.com/package/@tria-software/schematics-angular)
 
 ### Instalação dos Schematics Tria
 
 Para instalar os schematics no projeto, utilize o seguinte comando:
 
 ```bash
-npm install tria-schematics --save
+npm install @tria-software/schematics-angular --save
 ```
 
 ### Configurar arquivos padrões do projeto
@@ -37,7 +37,7 @@ npm install tria-schematics --save
 Para configurar os arquivos padrões no projeto, utilize o seguinte comando:
 
 ```bash
-schematics ./node_modules/tria-schematics-test:default-project . --dry-run false
+schematics ./node_modules/@tria-software/schematics-angular:default-project . --dry-run false
 ```
 
 ### Atualizar as dependências do arquivo
@@ -45,7 +45,7 @@ schematics ./node_modules/tria-schematics-test:default-project . --dry-run false
 Para atualizar as dependências do arquivo packge.json do projeto, utilize o seguinte comando:
 
 ```bash
-schematics ./node_modules/tria-schematics-test:update-dependencies . --dry-run false
+schematics ./node_modules/@tria-software/schematics-angular:update-dependencies . --dry-run false
 ```
 
 ## Schematics Disponíveis
@@ -67,7 +67,7 @@ Abaixo está a listagem dos schematics disponíveis:
 Para executar um schematic, utilize o seguinte comando padrão:
 
 ```bash
-schematics ./node_modules/tria-schematics-test:<nome-do-schematic> <nome-do-modulo-ou-component>
+schematics ./node_modules/@tria-software/schematics-angular:<nome-do-schematic> <nome-do-modulo-ou-component>
 ```
 
 ### Exemplo
@@ -75,7 +75,7 @@ schematics ./node_modules/tria-schematics-test:<nome-do-schematic> <nome-do-modu
 Para criar todos os componets de um módulo chamado `nova-tela`, utilize o comando abaixo:
 
 ```bash
-schematics ./node_modules/tria-schematics-test:create-components nova-tela
+schematics ./node_modules/@tria-software/schematics-angular:create-components nova-tela
 ```
 
 Certifique-se de substituir `<nome-do-schematic>` pelo nome do schematic desejado e `<nome-do-modulo-ou-component>` pelo nome do módulo/componente que você deseja criar.
