@@ -4,7 +4,7 @@
 
 Este documento fornece instruções sobre como configurar e utilizar os schematics criados para o seu projeto Angular.
 
-## Crianado novo projeto no Padrão Tria Software
+## Criando novo projeto no Padrão Tria Software
 
 ### Criando novo projeto
 
