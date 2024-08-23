@@ -10,14 +10,13 @@ import { UsersNewEditComponent } from "./pages/users/users-new-edit/users-new-ed
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { ProfileNewEditComponent } from "./pages/profile/profile-new-edit/profile-new-edit.component";
 import { ForgotPasswordChangeComponent } from "./pages/login/forgot-password-change/forgot-password-change.component";
-import { HomeComponent } from "./pages/home/home.component";
 import { FirstAccessComponent } from "./pages/first-access/first-access.component";
 import { CustomLayoutComponent } from "./pages/custom-layout/custom-layout.component";
 import { CustomLayoutNewEditComponent } from "./pages/custom-layout/custom-layout-new-edit/custom-layout-new-edit.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent, canActivate: [AuthGuard] },
-  { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
+  { path: "", component: CustomLayoutComponent, canActivate: [AuthGuard] },
+  { path: "home", component: CustomLayoutComponent, canActivate: [AuthGuard] },
   {
     path: "first-access",
     component: FirstAccessComponent,

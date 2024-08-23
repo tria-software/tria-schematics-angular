@@ -70,7 +70,6 @@ import { ProfileNewEditComponent } from "./pages/profile/profile-new-edit/profil
 import { ProfileTableGridComponent } from "./pages/profile/profile-table-grid/profile-table-grid.component"
 import { ProfileService } from "./pages/profile/service/profile.service";
 import { LoginComponent } from "./pages/login/login.component";
-import { HomeComponent } from "./pages/home/home.component";
 import { UsersComponent } from "./pages/users/users.component";
 import { AuthenticationService } from "./pages/login/service/authentication-service";
 import { UserService } from "./pages/users/service/user.service";
@@ -93,7 +92,6 @@ import { CustomLayoutService } from "./pages/custom-layout/service/custom-layout
     GridPaginationComponent,
     HeaderPageComponent,
     SideNavComponent,
-    HomeComponent,
     UsersComponent,
     NavbarComponent,
     SideMenuComponent,

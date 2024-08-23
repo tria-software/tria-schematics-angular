@@ -54,7 +54,7 @@ function updatePackageJson(version: string = '15.0.2'): Rule {
       "ngx-toastr": "^16.0.0",
       "rxjs": "~7.5.0",
       "tslib": "^2.3.0",
-      "tria-schematics-test": "latest",
+      "tria-schematics-angular": "latest",
       "zone.js": "~0.12.0"
     };
 
