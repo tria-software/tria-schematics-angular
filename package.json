@@ -1,6 +1,6 @@
 {
   "name": "tria-schematics-angular",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Tria Software Schematics Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -9,13 +9,14 @@
   "keywords": [
     "schematics",
     "angular",
-    "tria-software"
+    "tria-software",
+    "Tria Software"
   ],
   "author": "Guilherme Camargo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tria-software/schematics-angular"
+    "url": "https://github.com/tria-software/tria-schematics-angular"
   },
   "private": false,
   "schematics": "./src/collection.json",

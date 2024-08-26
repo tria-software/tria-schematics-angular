@@ -11,6 +11,12 @@ Este documento fornece instruções sobre como configurar e utilizar os schemati
 Para criar um novo projeto, utilize o seguinte comando:
 
 ```bash
+ng new --create-application false <nome-do-projeto>
+```
+
+ou
+
+```bash
 ng n --create-application false <nome-do-projeto>
 ```
 
@@ -33,6 +39,12 @@ npm install tria-schematics-angular --save
 Para configurar os arquivos padrões no projeto, utilize o seguinte comando:
 
 ```bash
+ng generate tria-schematics-angular:default-project .
+```
+
+ou
+
+```bash
 ng g tria-schematics-angular:default-project .
 ```
 
@@ -42,6 +54,12 @@ Para atualizar as dependências do arquivo packge.json do projeto, utilize o seg
 
 ```bash
 ng g tria-schematics-angular:update-dependencies
+```
+
+ou
+
+```bash
+ng generate tria-schematics-angular:update-dependencies
 ```
 
 ## Schematics Disponíveis
@@ -63,12 +81,24 @@ Abaixo está a listagem dos schematics disponíveis:
 Para executar um schematic, utilize o seguinte comando padrão:
 
 ```bash
+ng generate tria-schematics-angular:<nome-do-schematic> <nome-do-modulo-ou-component>
+```
+
+ou
+
+```bash
 ng g tria-schematics-angular:<nome-do-schematic> <nome-do-modulo-ou-component>
 ```
 
 ### Exemplo
 
 Para criar todos os componets de um módulo chamado `novo-modulo`, utilize o comando abaixo:
+
+```bash
+ng generate tria-schematics-angular:create-components <novo-modulo>
+```
+
+ou
 
 ```bash
 ng g tria-schematics-angular:create-components <novo-modulo>
