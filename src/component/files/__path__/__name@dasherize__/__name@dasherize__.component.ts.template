@@ -1,5 +1,4 @@
 import { Component, ViewChild } from "@angular/core";
-import { ToastrService } from "ngx-toastr";
 import { MatDialog } from "@angular/material/dialog";
 import { AnalyzeModulePermission } from "src/app/_helpers/analyze-module-permission";
 import { GlobalValuesService } from "src/app/_service/global.values.service";
@@ -58,7 +57,6 @@ export class <%= classify(name)%>Component {
   isFilterApplied: boolean = false;
 
   constructor(
-    private toastr: ToastrService,
     private global: GlobalValuesService,
     private service: <%= classify(name)%>Service,
     public dialog: MatDialog,
