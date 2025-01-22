@@ -1,6 +1,9 @@
 import { Component, ViewChild } from "@angular/core";
-import { ToastrService } from "ngx-toastr";
 import { MatDialog } from "@angular/material/dialog";
+<% if (customLayout) { %>
+import { NgSelectComponent } from "@ng-select/ng-select";
+import { ToastrService } from 'ngx-toastr';
+<% } %>
 import { AnalyzeModulePermission } from "src/app/_helpers/analyze-module-permission";
 import { GlobalValuesService } from "src/app/_service/global.values.service";
 import { FilterMenuComponent } from "src/app/components/filter-menu/filter-menu.component";
@@ -16,7 +19,6 @@ import {
 } from "src/app/_dto/layout-columns-dto";
 import { LayoutLotsMenuComponent } from 'src/app/components/layouts-lot-menu/layout-lots-menu.component';
 import { ModalAddLayoutComponent } from 'src/app/components/modal-add-layout/modal-add-layout.component';
-import { ToastrService } from 'ngx-toastr';
 <% } %>
 
 @Component({
@@ -58,7 +60,6 @@ export class <%= classify(name)%>Component {
   isFilterApplied: boolean = false;
 
   constructor(
-    private toastr: ToastrService,
     private global: GlobalValuesService,
     private service: <%= classify(name)%>Service,
     public dialog: MatDialog,
