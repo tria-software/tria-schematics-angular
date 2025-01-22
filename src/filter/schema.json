@@ -100,6 +100,11 @@
       "type": "boolean",
       "default": false,
       "description": "Specifies if declaring module exports the component."
+    },
+    "customLayout": {
+      "type": "boolean",
+      "description": "Flag to indicate if a custom layout is added.",
+      "default": false
     }
   },
   "required": [
