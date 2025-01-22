@@ -15,7 +15,13 @@
             <tr>
               <th>
               </th>
+              <% if (customLayout) { %>
+              <th *ngFor="let column of filterColumn(listColumns)">
+                {{ column.description }}
+              </th>
+              <% } else {%>
               <th>Campo de Exemplo</th>
+              <% } %>
               <th class="text-center">Ações</th>
             </tr>
           </thead>
@@ -33,7 +39,17 @@
             >
               <td class="text-center">
               </td>
+              <% if (customLayout) { %>
+              <td *ngFor="let column of filterColumn(listColumns)">
+                {{
+                  column.description != "Data Criação"
+                    ? mapValue(column, item)
+                    : (mapValue(column, item) | date : "dd/MM/yyyy HH:mm")
+                }}
+              </td>
+              <% } else {%>
               <td>Coloque aqui a propriedade do seu item</td>
+              <% } %>
               <td class="text-center">
                 <div>
                   <i

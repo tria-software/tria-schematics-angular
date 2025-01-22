@@ -4,7 +4,8 @@
   [titleBtn]="'Novo <%= classify(name)%>'"
 ></app-header-page>
 
-<app-<%= dasherize(name)%>-table-grid>
+<app-<%= dasherize(name)%>-table-grid <% if (customLayout) { %> [listColumns]="listColumnsChange" <% } %>>
+  <% if (customLayout) { %><div class="filters-group"> <% } %>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6">
       <span class="span-search">Pesquisa Rápida</span><br />
@@ -37,6 +38,62 @@
       </button>
     </div>
   </div>
+  <% if (customLayout) { %></div> <% } %>
+  <% if (customLayout) { %>
+  <app-accordion
+    [startsCollapsed]="true"
+    [title]="'Colunas'"
+    style="background-color: white !important; margin-top: 10px"
+  >
+    <div class="panel-body">
+      <div class="filters-group" style="box-shadow: none">
+        <div class="row">
+          <div class="col-sm-12 col-md-8 col-lg-6">
+            <span>Layouts</span><br />
+            <ng-select
+              appendTo="body"
+              placeholder="Selecione o Layout desejado"
+              [items]="listLayouts.data"
+              [(ngModel)]="selectedLayoutId"
+              bindLabel="name"
+              bindValue="id"
+              (change)="onChangeLayout($event)"
+            >
+            </ng-select>
+          </div>
+          <div
+            class="col-sm-12 col-lg-6 text-right margin-group-btn-filter"
+            style="padding-right: 0"
+          >
+            <button
+              *ngIf="selectedLayoutId"
+              class="btn-delete btn-actions"
+              style="margin-left: 10px"
+              (click)="deleteLayout()"
+            >
+              Deletar Layout
+            </button>
+            <button
+              class="btn-actions btn-filter"
+              style="margin-left: 10px"
+              (click)="openModalAdd()"
+            >
+              {{ textButtonLayout }}
+            </button>
+
+            <button
+              class="btn-actions btn-filter"
+              style="margin-left: 10px"
+              (click)="showColumns()"
+            >
+              Colunas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-accordion>
+  <% } %>
 </app-<%= dasherize(name)%>-table-grid>
 
 <app-filter-menu (closeBackgroundFilter)="changeFilterMenu()">
@@ -51,3 +108,16 @@
   (click)="changeFilterMenu()"
   class="filter-menu-background"
 ></div>
+
+<% if (customLayout) { %>
+<app-layout-lots (closeBackgroundFilter)="changeColumnsMenu()">
+  <app-table-grid-generic-list [listColumns]="listColumnsChange">
+  </app-table-grid-generic-list>
+</app-layout-lots>
+
+<div
+  *ngIf="showColumnsMenu"
+  (click)="changeColumnsMenu()"
+  class="filter-menu-background"
+></div>
+<% } %>
