@@ -1,6 +1,6 @@
 {
   "name": "tria-schematics-angular",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Tria Software Schematics Angular",
   "scripts": {
     "build": "tsc -p tsconfig.json",

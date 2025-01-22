@@ -62,7 +62,11 @@
                     style="margin-right: 15px"
                     class="bi bi-trash icon delete"
                     matTooltip="Clique para Deletar"
+                    <% if (customLayout) { %>
+                    (click)="remove(item)"
+                    <% } else {%> 
                     (click)="activateDisableDelete(item, true)"
+                    <% } %>
                   >
                   </i>
                 </div>
