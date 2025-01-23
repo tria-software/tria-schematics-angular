@@ -76,7 +76,7 @@ export class <%= classify(name)%>Component {
     if (!this.access.haveAccessModule('<%= dasherize(name)%>')) return;
     <% if (customLayout) { %>
     this.setColumnsDefault();
-    this.layoutsService.getListLayouts("Allocation").subscribe((result) => {
+    this.layoutsService.getListLayouts("<%= classify(name)%>").subscribe((result) => {
       this.listLayouts = result;
     });
     <% } %>
@@ -188,7 +188,7 @@ export class <%= classify(name)%>Component {
     const dto = {
       id: this.selectedLayoutId ?? 0,
       name: name,
-      table: "Allocation",
+      table: "<%= classify(name)%>",
       columns: this.listColumnsChange
         .filter((x) => x.isShow)
         .map((item) => {
@@ -203,7 +203,7 @@ export class <%= classify(name)%>Component {
           this.toastr.success("Layout salvo com sucesso!", "Atenção!");
 
           this.layoutsService
-            .getListLayouts("Allocation")
+            .getListLayouts("<%= classify(name)%>")
             .subscribe((result) => {
               this.listLayouts = result;
 
@@ -266,7 +266,7 @@ export class <%= classify(name)%>Component {
           this.ngSelectComponent?.handleClearClick();
           this.toastr.success("Layout deletado com sucesso!", "Atenção!");
           this.layoutsService
-            .getListLayouts("Allocation")
+            .getListLayouts("<%= classify(name)%>")
             .subscribe((result) => {
               this.listLayouts = result;
             });

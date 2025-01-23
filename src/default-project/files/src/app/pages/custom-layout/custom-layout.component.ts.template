@@ -250,7 +250,7 @@ export class CustomLayoutComponent {
           this.ngSelectComponent?.handleClearClick();
           this.toastr.success("Layout deletado com sucesso!", "Atenção!");
           this.layoutsService
-            .getListLayouts("Allocation")
+            .getListLayouts("CustomLayout")
             .subscribe((result) => {
               this.listLayouts = result;
             });

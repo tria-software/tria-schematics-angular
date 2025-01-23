@@ -114,9 +114,9 @@ export class <%= classify(name)%>TableGridComponent {
         this.global.setLoading(false);
 
         if (result) {
-          this.toastr.success("Alocação Exluida com sucesso!", "Atenção!");
+          this.toastr.success("<%= classify(name)%> Exluida com sucesso!", "Atenção!");
         } else {
-          this.toastr.error("Erro ao excluir Alocação!", "Atenção!");
+          this.toastr.error("Erro ao excluir <%= classify(name)%>!", "Atenção!");
         }
       },
       (error) => {
@@ -125,7 +125,7 @@ export class <%= classify(name)%>TableGridComponent {
         if (error?.error) {
           this.toastr.error(error?.error, "Atenção!");
         } else {
-          this.toastr.error("Falha ao deletar Alocação", "Atenção!");
+          this.toastr.error("Falha ao deletar <%= classify(name)%>", "Atenção!");
         }
       }
     );
